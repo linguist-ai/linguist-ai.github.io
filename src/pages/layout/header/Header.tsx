@@ -1,44 +1,64 @@
-import { Anchor, Box, Burger, Container, Group } from "@mantine/core";
+import {
+  Anchor,
+  Box,
+  Burger,
+  Container,
+  Divider,
+  Drawer,
+  Flex,
+  Group,
+  Paper,
+  Space,
+} from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { IconBrandGithubFilled } from "@tabler/icons-react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import classes from "./Header.module.css";
 
-const userLinks = [{ link: "#", label: "", icon: <IconBrandGithubFilled /> }];
+const userLinks = [
+  {
+    link: "https://github.com/linguist-ai",
+    label: "",
+    icon: <IconBrandGithubFilled />,
+    target: "_blank",
+  },
+];
 
 const mainLinks = [
   { link: "/", label: "Home" },
-  { link: "/about-us", label: "About Us" },
+  { link: "/team", label: "Our Team" },
   { link: "/reports", label: "Reports" },
+  // { link: "/about-us", label: "About Us" },
 ];
 
 export function Header() {
-  const [opened, { toggle }] = useDisclosure(false);
+  const [opened, { toggle: toggleDrawer, close: closeDrawer }] =
+    useDisclosure(false);
   const [active, setActive] = useState(0);
 
   const mainItems = mainLinks.map((item, index) => (
-    <Anchor<"a">
-      href={item.link}
+    <Link
+      to={item.link}
       key={item.label}
       className={classes.mainLink}
       data-active={index === active || undefined}
-      onClick={(event) => {
-        event.preventDefault();
+      onClick={() => {
         setActive(index);
       }}
     >
       {item.label}
-    </Anchor>
+    </Link>
   ));
 
   const secondaryItems = userLinks.map((item) => (
-    <Anchor
+    <Anchor<"a">
       href={item.link}
       key={item.label}
-      onClick={(event) => event.preventDefault()}
       className={classes.secondaryLink}
+      target={item.target || ""}
     >
-      {item.icon}
+      {item?.icon}
       {item.label}
     </Anchor>
   ));
@@ -54,11 +74,20 @@ export function Header() {
         </Box>
         <Burger
           opened={opened}
-          onClick={toggle}
+          onClick={toggleDrawer}
           className={classes.burger}
           size="sm"
           hiddenFrom="sm"
         />
+
+        <Drawer opened={opened} onClose={closeDrawer}>
+          <Flex gap={20} direction="column">
+            {mainItems}
+          </Flex>
+          <Space h={20} />
+          <Divider />
+          <Box p={20}>{secondaryItems}</Box>
+        </Drawer>
       </Container>
     </header>
   );

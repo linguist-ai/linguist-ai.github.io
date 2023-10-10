@@ -2,12 +2,29 @@ import { MantineProvider } from "@mantine/core";
 import "@mantine/core/styles.css";
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App.tsx";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import LandingPage from "./pages/landing/index.tsx";
+import Layout from "./pages/layout.tsx";
+import OurTeam from "./pages/our-team/index.tsx";
+import Reports from "./pages/reports/Reports.tsx";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Layout />,
+    children: [
+      { path: "/", element: <LandingPage /> },
+      // { path: "/about-us", element: <AboutUs /> },
+      { path: "/reports", element: <Reports /> },
+      { path: "/team", element: <OurTeam /> },
+    ],
+  },
+]);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <MantineProvider>
-      <App />
+      <RouterProvider router={router} />
     </MantineProvider>
   </React.StrictMode>
 );
