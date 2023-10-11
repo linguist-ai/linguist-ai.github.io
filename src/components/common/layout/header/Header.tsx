@@ -8,6 +8,7 @@ import {
   Flex,
   Group,
   Space,
+  Title,
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { IconBrandGithubFilled } from "@tabler/icons-react";
@@ -43,6 +44,7 @@ export function Header() {
       className={classes.mainLink}
       data-active={index === activeLink || undefined}
       onClick={() => {
+        closeDrawer();
         setActiveLink(index);
       }}
     >
@@ -65,6 +67,13 @@ export function Header() {
   return (
     <header className={classes.header}>
       <Container className={classes.inner}>
+        <Group justify="flex-start">
+          <Link to="/" className={classes.logoLink}>
+            <Title order={1} c="cyan">
+              LinguistAI
+            </Title>
+          </Link>
+        </Group>
         <Box className={classes.links} visibleFrom="sm">
           <Group justify="flex-end">{secondaryItems}</Group>
           <Group gap={0} justify="flex-end" className={classes.mainLinks}>
