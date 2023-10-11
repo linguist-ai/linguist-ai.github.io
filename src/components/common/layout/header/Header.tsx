@@ -7,7 +7,6 @@ import {
   Drawer,
   Flex,
   Group,
-  Paper,
   Space,
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
@@ -35,16 +34,16 @@ const mainLinks = [
 export function Header() {
   const [opened, { toggle: toggleDrawer, close: closeDrawer }] =
     useDisclosure(false);
-  const [active, setActive] = useState(0);
+  const [activeLink, setActiveLink] = useState(0);
 
   const mainItems = mainLinks.map((item, index) => (
     <Link
       to={item.link}
       key={item.label}
       className={classes.mainLink}
-      data-active={index === active || undefined}
+      data-active={index === activeLink || undefined}
       onClick={() => {
-        setActive(index);
+        setActiveLink(index);
       }}
     >
       {item.label}
