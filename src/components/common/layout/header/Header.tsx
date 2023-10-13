@@ -68,7 +68,11 @@ export function Header() {
     <header className={classes.header}>
       <Container className={classes.inner}>
         <Group justify="flex-start">
-          <Link to="/" className={classes.logoLink}>
+          <Link
+            to="/"
+            className={classes.logoLink}
+            onClick={() => setActiveLink(0)}
+          >
             <Title order={1} c="cyan">
               LinguistAI
             </Title>

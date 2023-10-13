@@ -1,12 +1,12 @@
 import { Avatar, Paper, Text } from "@mantine/core";
 
-interface UserInfoCardProps {
+interface TeamMemberInfoCardProps {
   imgSrc: string;
   name: string;
   title?: string;
 }
 
-export function UserInfoCard(props: UserInfoCardProps) {
+export function TeamMemberInfoCard(props: TeamMemberInfoCardProps) {
   const { imgSrc, name, title } = props;
 
   return (

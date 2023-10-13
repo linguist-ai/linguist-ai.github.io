@@ -1,26 +1,12 @@
-import { Box, Container, Flex, Space, Text, Title } from "@mantine/core";
+import { Container } from "@mantine/core";
+import { FeaturesSection } from "./features-section/FeaturesSection";
+import { HeroSection } from "./hero-section/HeroSection";
 
 const LandingPage = () => {
   return (
     <Container maw={1200}>
-      <Title order={1}>Linguist AI</Title>
-      <Space h={30} />
-      <Flex direction="row" gap={20}>
-        <Box maw={400}>
-          <Text>
-            One of the most challenging parts of learning a new language is to
-            grasp new words and understand their meanings within the context of
-            a conversation.
-          </Text>
-        </Box>
-        <Box maw={400}>
-          <Text>
-            We aim to solve this problem by providing a platform that allows
-            users to learn new words and their meanings while interacting with a
-            chatbot, having conversations of their preference.
-          </Text>
-        </Box>
-      </Flex>
+      <HeroSection />
+      <FeaturesSection />
     </Container>
   );
 };
