@@ -28,7 +28,10 @@ const OurTeam = () => {
                 name="Tolga Özgün"
                 imgSrc="/images/team/tolga-ozgun.png"
               />
-              {/* <UserInfoCard name="Yağız Can Aslan" /> */}
+              <TeamMemberInfoCard
+                name="Yağız Can Aslan"
+                imgSrc="/images/team/yagiz-can-aslan.jpg"
+              />
             </Flex>
           </Flex>
           <Stack>

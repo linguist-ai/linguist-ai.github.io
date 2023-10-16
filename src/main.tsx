@@ -3,6 +3,7 @@ import "@mantine/core/styles.css";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import NotFound from "./pages/error/NotFound.tsx";
 import LandingPage from "./pages/landing/index.tsx";
 import Layout from "./pages/layout.tsx";
 import OurTeam from "./pages/our-team/index.tsx";
@@ -19,6 +20,7 @@ const router = createBrowserRouter([
       { path: "/team", element: <OurTeam /> },
     ],
   },
+  { path: "*", element: <NotFound /> },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
